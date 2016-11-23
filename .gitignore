@@ -76,3 +76,6 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+
+# database 
+derby.log

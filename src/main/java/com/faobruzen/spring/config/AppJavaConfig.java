@@ -28,17 +28,33 @@ public class AppJavaConfig {
         return new PrintWriter(new StringWriter());
     }	
     
+    private DataSource getEmbeddedDataSource()
+    {
+    	DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.url("jdbc:derby:C:\\Projects\\Database\\Falcode;create=true");
+        dataSourceBuilder.username("paulm");
+        dataSourceBuilder.password("reddingo");
+        dataSourceBuilder.driverClassName("org.apache.derby.jdbc.EmbeddedDriver");
+        DataSource ds = dataSourceBuilder.build(); 
+        return ds;
+    }
+    
+    private DataSource getServerDataSource()
+    {
+    	DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.url("jdbc:derby://localhost:1527//home/paulm/Documents/Projects/Database/Woosterizer/Woosterizer_DEV;create=true");
+        dataSourceBuilder.username("paulm");
+        dataSourceBuilder.password("reddingo");
+        dataSourceBuilder.driverClassName("org.apache.derby.jdbc.ClientDriver");
+        DataSource ds = dataSourceBuilder.build(); 
+        return ds;
+    }
     
 
     @Bean
     public DataSource dataSource() {
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-            dataSourceBuilder.url("jdbc:derby:C:\\Projects\\Database\\Falcode;create=true");
-            dataSourceBuilder.username("paulm");
-            dataSourceBuilder.password("reddingo");
-            dataSourceBuilder.driverClassName("org.apache.derby.jdbc.EmbeddedDriver");
-            DataSource ds = dataSourceBuilder.build(); 
-            return ds;
+    	return getServerDataSource();
+        //return getEmbeddedDataSource();
     }
     
     @Bean

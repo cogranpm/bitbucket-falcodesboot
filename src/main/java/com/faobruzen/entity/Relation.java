@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name="Entity")
 public class Relation {
 	
 	public Relation()
@@ -20,7 +23,8 @@ public class Relation {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(generator="SEQ_ENTITY")
+	@SequenceGenerator(name="SEQ_ENTITY",sequenceName="SEQ_ENTITY")
 	private Long entityId;
 	
 	@Size(max = 30)

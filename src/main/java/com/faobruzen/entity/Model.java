@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import javafx.beans.property.SimpleLongProperty;
@@ -43,7 +44,8 @@ public class Model {
 	}
 
 	@javax.persistence.Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(generator="SEQ_MODEL")
+	@SequenceGenerator(name="SEQ_MODEL",sequenceName="SEQ_MODEL")
 	@Column(name="ModelID")
 	public Long getModelId() {
 		return this.modelIdProperty.get();
@@ -57,6 +59,7 @@ public class Model {
 		return modelIdProperty;
 	}
 
+	@Transient
 	public void setModelIdProperty(SimpleLongProperty modelIdProperty) {
 		this.modelIdProperty = modelIdProperty;
 	}
@@ -66,6 +69,7 @@ public class Model {
 		return nameProperty;
 	}
 
+	@Transient
 	public void setNameProperty(SimpleStringProperty nameProperty) {
 		this.nameProperty = nameProperty;
 	}	
