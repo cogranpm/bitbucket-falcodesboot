@@ -8,7 +8,7 @@
 <?import org.controlsfx.control.spreadsheet.*?>
 
 
-<VBox prefHeight="631.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faubruzen.ui.controller.ShellController">
+<VBox prefHeight="631.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faobruzen.ui.controller.ShellController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -19,6 +19,7 @@
       <TableView id="tblModel" fx:id="tblModel" editable="true" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="314.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn id="colName" fx:id="colName" maxWidth="364.0" prefWidth="364.0" text="Name" />
+          <TableColumn id="colTest" fx:id="coltest" text="Test"/>
         </columns>
       </TableView>
 	      <SpreadsheetView fx:id="spreadsheet" editable="true" showRowHeader="true" showColumnHeader="true" prefHeight="300.0" prefWidth="400.0" />

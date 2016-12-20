@@ -56,6 +56,9 @@ public class ShellController implements Initializable{
 	private TableColumn<Model, String> colName;
 	
 	@FXML
+	private TableColumn<Model, String> colTest;
+	
+	@FXML
 	private SpreadsheetView spreadsheet;
 	
 	private ObservableList<Model> models = null;
@@ -112,10 +115,14 @@ public class ShellController implements Initializable{
 			);
 		
 		
+		
+		
 		/* we get an iterable list from spring, need to convert to List interface, google guava provides this */
-		list = repository.findAll();
-		uiList = Lists.newArrayList(list);
+		uiList = repository.findAll();
+		//list = repository.findAll();
+		//uiList = Lists.newArrayList(list);
         models = FXCollections.observableList(uiList);
+        
         tblModel.setItems(models);
         
         
