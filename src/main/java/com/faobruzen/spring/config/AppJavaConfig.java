@@ -13,12 +13,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
-@ComponentScan("com.faubruzen.ui.controller")
+@ComponentScan("com.faobruzen.ui.controller")
+@EnableJpaRepositories("com.faobruzen.repository")
 public class AppJavaConfig {
 
 	
@@ -71,6 +73,7 @@ public class AppJavaConfig {
       properties.setProperty("spring.jpa.database-platform", "org.hibernate.dialect.DerbyTenSevenDialect");
       properties.setProperty("spring.jpa.show-sql", "false");
       properties.setProperty("spring.datasource.continue-on-error", "false");
+      properties.setProperty("spring.jpa.properties.hibernate.default_schema", "APP");
       em.setJpaProperties(properties);
 
       return em;

@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 @Entity
+@Table(schema="APP")
 @Access(AccessType.PROPERTY)
 public class Model {
 
@@ -50,16 +52,18 @@ public class Model {
 	public Long getModelId() {
 		return this.modelIdProperty.get();
 	}
+	
 	public void setModelId(Long modelId) {
 		this.modelIdProperty.set(modelId);
 	}
+	
+	
 	
 	@Transient
 	public SimpleLongProperty getModelIdProperty() {
 		return modelIdProperty;
 	}
 
-	@Transient
 	public void setModelIdProperty(SimpleLongProperty modelIdProperty) {
 		this.modelIdProperty = modelIdProperty;
 	}
@@ -69,7 +73,6 @@ public class Model {
 		return nameProperty;
 	}
 
-	@Transient
 	public void setNameProperty(SimpleStringProperty nameProperty) {
 		this.nameProperty = nameProperty;
 	}	
@@ -78,5 +81,36 @@ public class Model {
 	public String toString() {
 		return String.format("Model[ modelId=%d, name=%s", modelIdProperty.get(), nameProperty.get() );
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		//result = prime * result + ((modelIdProperty == null) ? 0 : 1);
+		result = prime * result + ((nameProperty == null) ? 0 : nameProperty.get().hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Model other = (Model) obj;
+		if (modelIdProperty == null) {
+			if (other.modelIdProperty != null)
+				return false;
+		} else if (!(modelIdProperty.get() == other.modelIdProperty.get()))
+			return false;
+		
+		return true;
+	}
+
+
+	
+	
 
 }

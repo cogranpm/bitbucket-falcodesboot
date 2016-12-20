@@ -1,9 +1,11 @@
-package com.faubruzen.ui.controller;
+package com.faobruzen.ui.controller;
 
 
 import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 import org.controlsfx.control.spreadsheet.GridBase;
 import org.controlsfx.control.spreadsheet.SpreadsheetCell;
@@ -13,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.faobruzen.entity.Model;
+import com.faobruzen.repository.EntityRepository;
 import com.faobruzen.repository.ModelRepository;
+import com.google.common.collect.Lists;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -55,7 +59,8 @@ public class ShellController implements Initializable{
 	private SpreadsheetView spreadsheet;
 	
 	private ObservableList<Model> models = null;
-	private List<Model> list = null;
+	private Iterable<Model> list = null;
+	private List<Model> uiList = null;
 	
 	@FXML
 	public void OnAdd(ActionEvent e)
@@ -70,7 +75,7 @@ public class ShellController implements Initializable{
 	@FXML
 	public void onSave(ActionEvent e)
 	{
-		repository.save(list);
+		repository.save(uiList);
 	}
 	
 	@Autowired
@@ -106,8 +111,11 @@ public class ShellController implements Initializable{
 			    }
 			);
 		
+		
+		/* we get an iterable list from spring, need to convert to List interface, google guava provides this */
 		list = repository.findAll();
-        models = FXCollections.observableList(list);
+		uiList = Lists.newArrayList(list);
+        models = FXCollections.observableList(uiList);
         tblModel.setItems(models);
         
         

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="Entity")
+@Table(name="Entity", schema="APP")
 public class Relation {
 	
 	public Relation()
