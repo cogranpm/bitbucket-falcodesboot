@@ -1,27 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.*?>
-<?import org.controlsfx.control.*?>
-<?import org.controlsfx.control.spreadsheet.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="631.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faobruzen.ui.controller.ShellController">
+<VBox prefHeight="631.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.faobruzen.ui.controller.ShellController">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="btnAdd" defaultButton="true" mnemonicParsing="false" onAction="#OnAdd" text="Add" />
-            <Button id="btnSave" fx:id="btnSave" mnemonicParsing="false" onAction="#onSave" text="Save" />
-         </children>
-      </HBox>
-      <TableView id="tblModel" fx:id="tblModel" editable="true" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="314.0" VBox.vgrow="ALWAYS">
-        <columns>
-          <TableColumn id="colName" fx:id="colName" maxWidth="364.0" prefWidth="364.0" text="Name" />
-          <TableColumn id="colTest" fx:id="coltest" text="Test"/>
-        </columns>
-      </TableView>
-	      <SpreadsheetView fx:id="spreadsheet" editable="true" showRowHeader="true" showColumnHeader="true" prefHeight="300.0" prefWidth="400.0" />
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+         <items>
+            <HBox maxHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: red;">
+               <children>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0">
+                    <items>
+                      <Button fx:id="btnTest" mnemonicParsing="false" onAction="#OnTest" text="Test" />
+                    </items>
+                  </ToolBar>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: blue;">
+               <children>
+                  <SplitPane dividerPositions="0.36042402826855124" prefHeight="531.0" prefWidth="568.0" HBox.hgrow="ALWAYS">
+                     <items>
+                        <HBox prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: yellow;">
+                           <children>
+                              <TreeView prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: green;">
+                           <children>
+                              <TextArea prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </items>
+                  </SplitPane>
+               </children>
+            </HBox>
+         </items>
+      </SplitPane>
 	</children>
 </VBox>
