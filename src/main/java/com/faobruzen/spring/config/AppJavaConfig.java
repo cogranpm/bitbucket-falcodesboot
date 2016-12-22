@@ -44,7 +44,7 @@ public class AppJavaConfig {
     private DataSource getServerDataSource()
     {
     	DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.url("jdbc:derby://localhost:1527//home/paulm/Documents/Projects/Database/Woosterizer/Woosterizer_DEV;create=true");
+        dataSourceBuilder.url("jdbc:derby://localhost:1527/Woosterizer_DEV;create=true");
         dataSourceBuilder.username("paulm");
         dataSourceBuilder.password("reddingo");
         dataSourceBuilder.driverClassName("org.apache.derby.jdbc.ClientDriver");

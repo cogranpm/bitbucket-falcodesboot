@@ -24,6 +24,7 @@ public class ShellController implements Initializable{
 	public void OnTest()
 	{
 		
+		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Information Dialog");
 		alert.setHeaderText("Look, an Information Dialog");
